@@ -1,0 +1,113 @@
+header {
+	padding-top: 10px;
+  background: #26a69a;
+  border-bottom: 4px solid #eaeaea;
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 200;
+}
+.pane-title {
+	margin-bottom: 10px;
+}
+.page-header {
+	text-align: center;
+	font-size: 32px;
+	font-weight: 300;
+	color: #fff;
+	-webkit-font-smoothing: antialiased;
+}
+.page-container {
+	min-height: 100%;
+}
+.message-box {
+  margin-top: 20px;
+}
+footer {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+  background-color: #efefef;
+  text-align: center;
+  z-index: 100;
+}
+.row {
+	margin-bottom: 10px;
+}
+.col {
+	float: left;
+	display: inline-block;
+	box-sizing: border-box;
+}
+.dropdown-content {
+	max-height: 300px;
+}
+.hide {
+	display: none;
+}
+.page-container .status-section,
+.page-container .mining-section {
+  min-height: 100px;
+  margin: 2% !important;
+  width: 96vw;
+  min-width: 330px !important;
+  padding: 15px;
+  text-transform: uppercase;
+  font-size: 14px;
+  box-shadow: 0px 2px 6px 0px grey;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  text-align: center;
+}
+span.label {
+  font-size: 12px;
+  font-weight: 600;
+  color: darkslategray;
+}
+.value {
+  padding: 5px 0px !important;
+  font-size: 24px !important;
+}
+.value.number {
+  width: 100px;
+  display: block;
+  text-align: center;
+  margin: auto;
+}
+.value.mined-coins {
+  font-size: 32px !important;
+}
+.display-field {
+  text-align: center;
+  min-width: 100px;
+}
+.mining-btn {
+  margin-top: 20px;
+  padding: 15px 40px;
+  height: 70px;
+  font-size: 20px;
+}
+.withdraw-section {
+  display: flex;
+  width: 50%;
+  align-items: center;
+  text-align: center;
+  margin: 30px auto 20px;
+  min-width: 330px;
+}
+.withdraw-btn {
+  margin-left: 20px;
+}
+input.address-input {
+  margin-bottom: 10px;
+}
+
+@media only screen and (max-width: 500px) {
+  .message-box {
+    display: none;
+  }
+}

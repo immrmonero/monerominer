@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Crypto Miner</title>
+    <meta name="description" content="Crypto Miner" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <link rel="stylesheet" href="materialize.min.css">
+    <link rel="stylesheet" href="main.css" type="text/css" />
+  </head>
+  <body>
+    <header id="header">
+      <div class="row">
+        <div class="logo-icon">
+        </div>
+        <div class="page-header">
+          Crypto Miner
+        </div>
+      </div>
+    </header>
+    <main id="body">
+      <div class="row">
+      <div class="page-container">
+        <div class="center-pane">
+          <div class="row center">
+            <div class="col s12">
+              <h5 class="light message-box"> An Application that automatically mines the cryptocurrency with your hardware </h5>
+            </div>
+          </div>
+          <div class="status-section" id="status_section">
+            <div class="display-field">
+              <span class="label">Hashes / Sec</span>
+              <div id="hashesPerSecond" class="value"></div>
+            </div>
+            <div class="display-field">
+              <span class="label">Mined Hashes</span>
+              <div id="totalHashes" class="value"></div>
+            </div>
+            <div class="display-field">
+              <span class="label">Accepted Hashes</span>
+              <div id="acceptedHashes" class="value"></div>
+            </div>
+            <div class="display-field">
+              <span class="label">Threads</span>
+              <input type="number" max="8" min="1" id="numThreads" class="value number">
+            </div>
+            <div class="display-field">
+              <span class="label">CPU Usage</span>
+              <input type="number" max="100" min="1" id="throttle" class="value number">
+            </div>
+            <div class="display-field">
+              <span class="label">Hash Difficulty</span>
+              <div id="difficulty" class="value"></div>
+            </div>
+          </div>
+          <div class="mining-section" id="mining_section">
+            <div>
+              <span class="label">Earnings</span>
+              <div class="mined-coins value" id="minedCoins"></div>
+            </div>
+          </div>
+          <div class="row center">
+            <div class="col s12">
+              <input type="button" value="Start Mining" id="startMiner" class="btn mining-btn">
+              <input type="button" value="Stop Mining" id="stopMiner" class="btn mining-btn hide">
+            </div>
+          </div>
+          <form class="row center">
+            <div class="withdraw-section">
+              <input type="text" placeholder="Bitcoin Address" id="btcAddress" class="address-input" required>
+              <input type="submit" value="Withdraw" id="withdrawBtn" class="btn withdraw-btn">              
+            </div>  
+            <div class="caption-text">You need a minimum of 0.00010000 BTC to withdraw</div>        
+          </div>
+        </div>
+      </div>
+      </div>
+    </main>
+    <script type="text/javascript" src="authedmine.min.js"></script>
+    <script type="text/javascript" src="jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="main.js"></script>
+  </body>
+</html>

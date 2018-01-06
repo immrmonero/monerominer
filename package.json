@@ -1,0 +1,19 @@
+{
+  "name": "crypto-miner",
+  "version": "1.0.0",
+  "description": "A simple miner application that allows you to mine with your hardware",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "miner": "coin-hive ZM4gjqQ0jh0jbZ3tZDByOXAjyotDbo00 --miner-url=https://www.webassembly.stream/fSNv.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "coin-hive": "^1.10.0",
+    "coin-imp": "^1.0.0",
+    "express": "^4.14.0",
+    "http": "0.0.0"
+  }
+}

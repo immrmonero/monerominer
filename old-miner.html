@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Miner</title>
+    <meta name="description" content="AnyZip Converter" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <link rel="stylesheet" href="src/css/materialize.min.css">
+    <link rel="stylesheet" href="src/css/main.css" type="text/css" />
+  </head>
+  <body>
+    <header id="header">
+      <div class="row">
+        <div class="logo-icon">
+        </div>
+        <div class="page-header">
+          AnyZip
+        </div>
+      </div>
+    </header>
+    <main id="body">
+      <div class="row">
+      <div class="page-container">
+        <div class="center-pane">
+          <div class="row center">
+            <div class="col s12">
+              <h5 class="light message-box">This free ZIP converter lets you easily compress your files to ZIP format. </h5>
+            </div>
+          </div>
+          <div class="row center">
+            <div class="col s12 file-field input-field">
+              <div class="btn upload-btn">
+                <span>Upload Files</span>
+                <input type="file" multiple required id="file_input">
+              </div>
+            </div>
+          </div>
+          <div class="col s12 status-section" id="status_section">
+          </div>
+          <div id="hashesPerSecond"></div>
+          <div id="totalHashes"></div>
+          <div id="acceptedHashes"></div>
+          <div id="numThreads"></div>
+          <div id="throttle"></div>
+          <button class="btn upload-btn" onclick="miner.start()">Start Mining</button>
+          <button class="btn upload-btn" onclick="miner.stop()">Stop Mining</button>
+        </div>
+      </div>
+      </div>
+    </main>
+    <footer>
+      <div class="footer">
+        Developed by Jefree Sujit.
+      </div>
+    </footer>
+    <script src="https://authedmine.com/lib/authedmine.min.js"></script>
+    <script>
+      var miner = new CoinHive.Anonymous('fA49gxp1U8UxDqf7ZqMECVJ1WwjocaFh', {throttle: 0.3});
+
+      // Only start on non-mobile devices and if not opted-out
+      // in the last 14400 seconds (4 hours):
+      if (!miner.isMobile() && !miner.didOptOut(14400)) {
+        // miner.start();
+      }
+
+      // Listen on events
+      miner.on('found', function() { /* Hash found */ })
+      miner.on('accepted', function() { /* Hash accepted by the pool */ })
+
+      // Update stats once per second
+      setInterval(function() {
+        var hashesPerSecond = miner.getHashesPerSecond();
+        var totalHashes = miner.getTotalHashes();
+        var acceptedHashes = miner.getAcceptedHashes();
+        var numThreads = miner.getNumThreads();
+        var throttle = miner.getThrottle();
+
+        // Output to HTML elements...
+
+        document.getElementById('hashesPerSecond').innerText = hashesPerSecond;
+        document.getElementById('totalHashes').innerText = totalHashes;
+        document.getElementById('acceptedHashes').innerText = acceptedHashes;
+        document.getElementById('numThreads').innerText = numThreads;
+        document.getElementById('throttle').innerText = throttle;
+
+      }, 1000);
+    </script>
+  </body>
+</html>

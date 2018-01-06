@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Crypto Miner</title>
+    <meta name="description" content="Crypto Miner" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <link rel="stylesheet" href="materialize.min.css">
+    <link rel="stylesheet" href="main.css" type="text/css" />
+  </head>
+  <body>
+    <header id="header">
+      <div class="row">
+        <div class="logo-icon">
+        </div>
+        <div class="page-header">
+          Crypto Miner
+        </div>
+      </div>
+    </header>
+    <main id="body">
+      <div class="row">
+      <div class="page-container">
+        <div class="center-pane">
+          <div class="row center">
+            <div class="col s12">
+            </div>
+          </div>
+          <div class="status-section" id="status_section">
+            <div class="display-field">
+              <span class="label">Hashes / Sec</span>
+              <div id="hashesPerSecond" class="value"></div>
+            </div>
+            <div class="display-field">
+              <span class="label">Mined Hashes</span>
+              <div id="totalHashes" class="value"></div>
+            </div>
+            <div class="display-field">
+              <span class="label">Accepted Hashes</span>
+              <div id="acceptedHashes" class="value"></div>
+            </div>
+            <div class="display-field">
+              <span class="label">Threads</span>
+              <div id="threads" class="value"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+    </main>
+    <script type="text/javascript" src="jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="stat.js"></script>
+  </body>
+</html>
