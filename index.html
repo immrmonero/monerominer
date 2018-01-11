@@ -4,11 +4,22 @@
     <meta charset="utf-8" />
     <title>Crypto Miner</title>
     <meta name="description" content="Crypto Miner" />
+    <meta name="keywords" content="cryptominer, crypto miner, bitcoin, mining, online, cryptocurrency, free, btc"/>
     <meta name="viewport" content="width=device-width" />
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="google-site-verification" content="Mq5B6m3Z19BJiai8Qc47V3HdUR7G75aBnp0BXfpYj4c" />
     <link rel="stylesheet" href="materialize.min.css">
     <link rel="stylesheet" href="main.css" type="text/css" />
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-112316070-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-112316070-1');
+    </script>
   </head>
   <body>
     <header id="header">
@@ -26,7 +37,9 @@
         <div class="center-pane">
           <div class="row center">
             <div class="col s12">
-              <h5 class="light message-box"> An Application that automatically mines the cryptocurrency with your hardware </h5>
+              <h5 class="light message-box"> 
+                An Application that automatically mines cryptocurrency with your device
+              </h5>
             </div>
           </div>
           <div class="status-section" id="status_section">
@@ -67,12 +80,24 @@
               <input type="button" value="Stop Mining" id="stopMiner" class="btn mining-btn hide">
             </div>
           </div>
-          <form class="row center">
+          <form id="withdrawForm" class="row center">
             <div class="withdraw-section">
               <input type="text" placeholder="Bitcoin Address" id="btcAddress" class="address-input" required>
               <input type="submit" value="Withdraw" id="withdrawBtn" class="btn withdraw-btn">              
             </div>  
-            <div class="caption-text">You need a minimum of 0.00010000 BTC to withdraw</div>        
+            <div class="caption-text">
+              You need a minimum of 0.00100000 BTC to withdraw
+            </div>
+            <div class="terms-conditions">
+              By clicking on Start Mining, you agree to our <a href="/terms" target="_blank" id="conditions">Terms and Conditions</a>
+            </div>
+          </div>
+        </div>
+        <div id="withdrawModal" class="modal-overlay hide">
+          <div class="modal-dialog">
+            <h5 class="modal-header" id="paymentStatus"></h5>
+            <div class="payment-message" id="paymentMessage"></div>
+            <input type="button" value="Close" id="closeModal" class="btn close-modal">
           </div>
         </div>
       </div>

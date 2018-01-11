@@ -20,6 +20,30 @@ function getMiningStatus () {
   return miner.isRunning() === true ? 'Running' : 'Stopped';
 }
 
+function withdrawBalance (balance) {
+  $.post('/api/withdraw', {
+    amount: balance,
+    currency: 'bitcoin',
+    address: $('#btcAddress').val() 
+  }).done(function(response) {
+    $('#paymentStatus').text('Submitted Successfully!');
+    $('#paymentMessage').text(response.message);    
+    $('#withdrawModal').removeClass('hide');
+    resetBalance();
+  }).fail(function(error) {
+    console.log(error);
+    $('#paymentStatus').text('Request Failed!');
+    $('#paymentMessage').text(error.responseJSON.message);
+    $('#withdrawModal').removeClass('hide');
+  });
+}
+
+function resetBalance () {
+  var balance = 0.0.toFixed(8);
+  localStorage.setItem('cryptoMiner-balance', balance);
+  $('#minedCoins').text(balance + ' BTC');
+}
+
 function setDefaults (coin, minedCoins, btcAddress) {
   $('#hashesPerSecond').html(miner.getHashesPerSecond().toFixed(2));
   $('#totalHashes').html(miner.getTotalHashes());
@@ -30,6 +54,10 @@ function setDefaults (coin, minedCoins, btcAddress) {
   $('#minedCoins').html(getMinedCoins(coin, minedCoins));
   $('#btcAddress').val(btcAddress);
 }
+
+$('#closeModal').on('click', function() {
+  $('#withdrawModal').addClass('hide');
+});
 
 $('#startMiner').on('click', function() {
   miner.start();
@@ -52,6 +80,16 @@ $('#throttle').on('blur', function(event) {
   miner.setThrottle((100 - value)/100);
 });
 
+$('#withdrawForm').on('submit', function(event) {
+  event.preventDefault();
+  let balance = parseFloat($('#minedCoins').text().replace ( /[^\d.]/g,''));
+  if (balance > 0.001) {
+    withdrawBalance(balance);
+  } else {
+    alert('You need a minimum of 0.00100000 BTC to withdraw');
+  }
+});
+
 $(document).ready(function() {
   var intervalId,
       selectedCoin = 'bitcoin',
@@ -68,6 +106,7 @@ $(document).ready(function() {
 
   miner.on('open', function(params) {
     console.log('miner open');
+    minedCoins = parseFloat(localStorage.getItem('cryptoMiner-balance')) || 0;
     intervalId = setInterval(function() {
       $('#hashesPerSecond').html(miner.getHashesPerSecond().toFixed(2));
       $('#totalHashes').html(miner.getTotalHashes());
@@ -78,6 +117,7 @@ $(document).ready(function() {
 
   miner.on('close', function(params) {
     clearInterval(intervalId);
+    localStorage.setItem('cryptoMiner-balance', $('#minedCoins').text().replace ( /[^\d.]/g,''));
   });
 
   setDefaults(selectedCoin, minedCoins, btcAddress);
