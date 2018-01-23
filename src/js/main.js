@@ -1,4 +1,4 @@
-var miner = new CoinHive.Anonymous('fA49gxp1U8UxDqf7ZqMECVJ1WwjocaFh', {throttle: 0.3});
+var miner = new CoinHive.Anonymous('UxW2fnNjA9PzHJZBhrQspp6uWsm36koR', {throttle: 0.3});
 
 function getDifficulty (coin) {
   let difficultyMapping = {
@@ -44,6 +44,11 @@ function resetBalance () {
   $('#minedCoins').text(balance + ' BTC');
 }
 
+function getReferalLink (btcAddress) {
+  let value = btcAddress || '<YOUR_BTC_ADDRESS>';
+  return 'http://crypto-miner.ml?ref=' + value;
+}
+
 function setDefaults (coin, minedCoins, btcAddress) {
   $('#hashesPerSecond').html(miner.getHashesPerSecond().toFixed(2));
   $('#totalHashes').html(miner.getTotalHashes());
@@ -53,6 +58,7 @@ function setDefaults (coin, minedCoins, btcAddress) {
   $('#throttle').val((100 - miner.getThrottle() * 100));
   $('#minedCoins').html(getMinedCoins(coin, minedCoins));
   $('#btcAddress').val(btcAddress);
+  $('#referalLink').text(getReferalLink(btcAddress));
 }
 
 $('#closeModal').on('click', function() {
@@ -69,6 +75,10 @@ $('#stopMiner').on('click', function() {
   $('#stopMiner').addClass('hide');
 });
 
+$('#btcAddress').on('change', function(event) {
+  $('#referalLink').text(getReferalLink(event.target.value));
+});
+
 $('#numThreads').on('blur', function(event) {
   var value = event.target.value;
   miner.setNumThreads(value);
@@ -82,7 +92,7 @@ $('#throttle').on('blur', function(event) {
 
 $('#withdrawForm').on('submit', function(event) {
   event.preventDefault();
-  let balance = parseFloat($('#minedCoins').text().replace ( /[^\d.]/g,''));
+  let balance = parseFloat(localStorage.getItem('cryptoMiner-balance')) || 0;
   if (balance > 0.001) {
     withdrawBalance(balance);
   } else {

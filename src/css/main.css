@@ -143,10 +143,21 @@ input.address-input {
 .close-modal {
   margin: 20px auto;
 }
+.referal-section {
+  margin-top: 20px;
+}
+.referal-link {
+  padding: 5px;
+  color: #26a69a;
+}
 
 @media only screen and (max-width: 500px) {
   .message-box {
     display: none;
+  }
+
+  .terms-conditions {
+    position: static;
   }
 }
 

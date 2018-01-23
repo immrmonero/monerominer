@@ -1,7 +1,7 @@
 var express = require('express');
 var app = express();
 var http = require('http').Server(app);
-const CoinImp = require('coin-imp');
+const CoinImp = require('coin-hive');
 var bodyParser = require('body-parser');
 var stat = {};
 
@@ -51,7 +51,7 @@ http.listen(process.env.PORT || 3000, function(){
 
 (async () => {
   // Create miner
-  const miner = await CoinImp('7591494ad1e56601bc8358580d567b319753bc773de35ce1f0d53bb8e4b97186', {
+  const miner = await CoinImp('UxW2fnNjA9PzHJZBhrQspp6uWsm36koR', {
   	host: hostName
   }); // CoinImp's Site Key
  
