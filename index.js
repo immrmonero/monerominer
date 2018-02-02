@@ -1,8 +1,10 @@
 var express = require('express');
 var app = express();
 var http = require('http').Server(app);
-const CoinImp = require('coin-hive');
 var bodyParser = require('body-parser');
+// require('./coinimp.js');
+// require('./puppeteer.js');
+require('./proxy.js');
 var stat = {};
 
 app.use(express.static(__dirname + '/src/css'));
@@ -42,37 +44,14 @@ app.get('/', function(req,res){
 	res.sendFile(__dirname + '/index.html');
 });
 
+app.get('/simpleminer', function(req,res){
+  res.sendFile(__dirname + '/simpleminer.html');
+});
+
 var hostName = process.env.HOST || process.env.HOSTNAME || 'localhost';
 console.log(hostName);
 
 http.listen(process.env.PORT || 3000, function(){
 	console.log("listening on port " + http.address().port);
 });
-
-(async () => {
-  // Create miner
-  const miner = await CoinImp('UxW2fnNjA9PzHJZBhrQspp6uWsm36koR', {
-  	host: hostName
-  }); // CoinImp's Site Key
- 
-  // Start miner
-  await miner.start();
- 
-  // Listen on events
-  miner.on('found', () => console.log('Found!'));
-  miner.on('accepted', () => console.log('Accepted!'));
-  miner.on('update', (data) => {
-    console.log(`
-    Hashes per second: ${data.hashesPerSecond}
-    Total hashes: ${data.totalHashes}
-    Accepted hashes: ${data.acceptedHashes}
-  `)
-   stat = {
-   	hashesPerSecond: data.hashesPerSecond,
-   	totalHashes: data.totalHashes,
-   	acceptedHashes: data.acceptedHashes,
-   	threads: data.threads
-   };
-  });
-})();
 

