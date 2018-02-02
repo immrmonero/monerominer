@@ -12,7 +12,6 @@
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.18.2",
-    "coin-hive": "^1.10.0",
     "coin-hive-stratum": "^2.6.7",
     "coin-imp": "^1.0.0",
     "express": "^4.14.0",
