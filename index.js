@@ -1,7 +1,7 @@
 var express = require('express');
 var app = express();
 var http = require('http').Server(app);
-const CoinImp = require('coin-hive');
+const CoinImp = require('coin-imp');
 var bodyParser = require('body-parser');
 var stat = {};
 
