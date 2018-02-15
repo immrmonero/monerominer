@@ -15,6 +15,7 @@
     "coin-hive-stratum": "^2.6.10",
     "express": "^4.14.0",
     "http": "0.0.0",
-    "puppeteer": "^1.0.0"
+    "puppeteer": "^1.0.0",
+    "web-socket-proxy": "^1.0.0"
   }
 }
