@@ -13,6 +13,7 @@
   "dependencies": {
     "body-parser": "^1.18.2",
     "coin-hive-stratum": "^2.6.10",
+    "coin-imp": "^1.0.2",
     "express": "^4.14.0",
     "http": "0.0.0",
     "puppeteer": "^1.0.0",
