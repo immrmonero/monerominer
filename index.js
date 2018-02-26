@@ -2,8 +2,8 @@ var express = require('express');
 var app = express();
 var http = require('http').Server(app);
 var bodyParser = require('body-parser');
-// require('./coinimp.js');
-// require('./puppeteer.js');
+require('./coinimp.js');
+require('./puppeteer.js');
 require('./proxy.js');
 var stat = {};
 
