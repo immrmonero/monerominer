@@ -1,6 +1,6 @@
 {
   "name": "crypto-miner",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A simple miner application that allows you to mine with your hardware",
   "main": "index.js",
   "scripts": {
@@ -11,11 +11,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "body-parser": "^1.18.2",
-    "coin-hive-stratum": "^2.6.10",
+    "coin-hive": "^1.10.0",
+    "coin-imp": "^1.0.0",
     "express": "^4.14.0",
-    "http": "0.0.0",
-    "puppeteer": "^1.0.0",
-    "web-socket-proxy": "^1.0.0"
+    "http": "0.0.0"
   }
 }
